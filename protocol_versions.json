@@ -1,0 +1,148 @@
+{
+  "protocolVersions": [
+    {
+      "name": "MC_1_8",
+      "version": 47
+    },
+    {
+      "name": "MC_1_8_9",
+      "version": 47
+    },
+    {
+      "name": "MC_1_9",
+      "version": 107
+    },
+    {
+      "name": "MC_1_9_1",
+      "version": 108
+    },
+    {
+      "name": "MC_1_9_2",
+      "version": 109
+    },
+    {
+      "name": "MC_1_9_3",
+      "version": 110
+    },
+    {
+      "name": "MC_1_9_4",
+      "version": 110
+    },
+    {
+      "name": "MC_1_10_X",
+      "version": 210
+    },
+    {
+      "name": "MC_1_11",
+      "version": 315
+    },
+    {
+      "name": "MC_1_11_1",
+      "version": 316
+    },
+    {
+      "name": "MC_1_11_2",
+      "version": 316
+    },
+    {
+      "name": "MC_1_12",
+      "version": 335
+    },
+    {
+      "name": "MC_1_12_1",
+      "version": 338
+    },
+    {
+      "name": "MC_1_12_2",
+      "version": 340
+    },
+    {
+      "name": "MC_1_14",
+      "version": 477
+    },
+    {
+      "name": "MC_1_14_1",
+      "version": 480
+    },
+    {
+      "name": "MC_1_14_2",
+      "version": 485
+    },
+    {
+      "name": "MC_1_14_3",
+      "version": 490
+    },
+    {
+      "name": "MC_1_14_4",
+      "version": 498
+    },
+    {
+      "name": "MC_1_15",
+      "version": 573
+    },
+    {
+      "name": "MC_1_15_1",
+      "version": 575
+    },
+    {
+      "name": "MC_1_15_2",
+      "version": 578
+    },
+    {
+      "name": "MC_1_16",
+      "version": 735
+    },
+    {
+      "name": "MC_1_16_1",
+      "version": 736
+    },
+    {
+      "name": "MC_1_16_2",
+      "version": 751
+    },
+    {
+      "name": "MC_1_16_3",
+      "version": 753
+    },
+    {
+      "name": "MC_1_16_4",
+      "version": 754
+    },
+    {
+      "name": "MC_1_16_5",
+      "version": 754
+    },
+    {
+      "name": "MC_1_17",
+      "version": 755
+    },
+    {
+      "name": "MC_1_17_1",
+      "version": 756
+    },
+    {
+      "name": "MC_1_18",
+      "version": 757
+    },
+    {
+      "name": "MC_1_18_1",
+      "version": 757
+    },
+    {
+      "name": "MC_1_18_2",
+      "version": 758
+    },
+    {
+      "name": "MC_1_19",
+      "version": 759
+    },
+    {
+      "name": "MC_1_19_1",
+      "version": 760
+    },
+    {
+      "name": "MC_1_19_2",
+      "version": 760
+    }
+  ]
+}
