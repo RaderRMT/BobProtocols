@@ -1,0 +1,73 @@
+int action = reader.readByte();
+packet.add("action", action);
+
+VarInt numberOfActions = reader.readVarInt();
+
+DataBlockArray actionsBlock = new DataBlockArray();
+packet.add("actions", actionsBlock);
+
+for (int i = 0; i < numberOfActions.get(); i++) {
+    DataBlock actionBlock = actionsBlock.create();
+
+    actionBlock.add("uuid", reader.readUUID());
+
+    if ((action & 0x01) != 0) {
+        actionBlock.add("name", reader.readString());
+
+        VarInt numberOfProperties = reader.readVarInt();
+
+        DataBlockArray properties = new DataBlockArray();
+        actionBlock.add("properties", properties);
+
+        for (int j = 0; j < numberOfProperties.get(); j++) {
+            DataBlock property = properties.create();
+
+            property.add("name", reader.readString());
+            property.add("value", reader.readString());
+
+            boolean isSigned = reader.readBoolean();
+            property.add("is_signed", isSigned);
+
+            if (isSigned) {
+                property.add("signature", reader.readString());
+            }
+        }
+    }
+
+    if ((action & 0x02) != 0) {
+        boolean hasSignatureData = reader.readBoolean();
+        actionBlock.add("has_sig_data", hasSignatureData);
+
+        if (hasSignatureData) {
+            actionBlock.add("chat_session_id", reader.readUUID());
+            actionBlock.add("expiry_time", reader.readLong());
+
+            VarInt publicKeyLength = reader.readVarInt();
+            actionBlock.add("public_key", reader.readFollowingBytes(publicKeyLength.get()));
+
+            VarInt signatureLength = reader.readVarInt();
+            actionBlock.add("signature", reader.readFollowingBytes(signatureLength.get()));
+        }
+    }
+
+    if ((action & 0x04) != 0) {
+        actionBlock.add("gamemode", reader.readVarInt());
+    }
+
+    if ((action & 0x08) != 0) {
+        actionBlock.add("listed", reader.readBoolean());
+    }
+
+    if ((action & 0x10) != 0) {
+        actionBlock.add("ping", reader.readVarInt());
+    }
+
+    if ((action & 0x20) != 0) {
+        boolean hasDisplayName = reader.readBoolean();
+        actionBlock.add("has_display_name", hasDisplayName);
+
+        if (hasDisplayName) {
+            actionBlock.add("display_name", reader.readString());
+        }
+    }
+}

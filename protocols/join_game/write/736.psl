@@ -1,0 +1,19 @@
+writer.writeInt(packet.get("entity_id", Integer.class));
+writer.writeByte(packet.get("gamemode", Integer.class));
+writer.writeByte(packet.get("previous_gamemode", Integer.class));
+
+writer.writeVarInt(packet.get("world_count", VarInt.class));
+for (String worldName : packet.get("world_names", String[].class)) {
+    writer.writePacketString(worldName);
+}
+
+writer.writeNBT(packet.get("nbt", TagCompound.class));
+writer.writePacketString(packet.get("dimension", String.class));
+writer.writePacketString(packet.get("world_name", String.class));
+writer.writeLong(packet.get("hashed_seed", Long.class));
+writer.writeByte(packet.get("max_players", Integer.class));
+writer.writeVarInt(packet.get("view_distance", VarInt.class));
+writer.writeBoolean(packet.get("reduced_debug_info", Boolean.class));
+writer.writeBoolean(packet.get("enable_respawn_screen", Boolean.class));
+writer.writeBoolean(packet.get("is_debug", Boolean.class));
+writer.writeBoolean(packet.get("is_flat", Boolean.class));

@@ -1,0 +1,62 @@
+VarInt action = reader.readVarInt();
+packet.add("action", action);
+
+VarInt numberOfPlayers = reader.readVarInt();
+packet.add("number_of_players", numberOfPlayers);
+
+DataBlockArray playersBlock = new DataBlockArray();
+packet.add("players", playersBlock);
+
+for (int i = 0; i < numberOfPlayers.get(); i++) {
+    DataBlock playerData = playersBlock.create();
+
+    playerData.add("uuid", reader.readUUID());
+
+    switch (action.get()) {
+        case 0:
+            playerData.add("name", reader.readString());
+
+            VarInt numberOfProperties = reader.readVarInt();
+            playerData.add("number_of_properties", numberOfProperties);
+
+            DataBlockArray properties = new DataBlockArray();
+            for (int j = 0; j < numberOfProperties.get(); j++) {
+                DataBlock property = properties.create();
+
+                property.add("name", reader.readString());
+                property.add("value", reader.readString());
+
+                boolean isSigned = reader.readBoolean();
+                property.add("is_signed", isSigned);
+
+                if (isSigned) {
+                    property.add("signature", reader.readString());
+                }
+            }
+
+            break;
+
+        case 1:
+            playerData.add("gamemode", reader.readVarInt());
+            break;
+
+        case 2:
+            playerData.add("ping", reader.readVarInt());
+            break;
+
+        case 3:
+            boolean hasDisplayName = reader.readBoolean();
+            playerData.add("has_display_name", hasDisplayName);
+
+            if (hasDisplayName) {
+                playerData.add("display_name", reader.readString());
+            }
+
+            break;
+
+        case 4:
+            playerData.add("gamemode", reader.readVarInt());
+            break;
+    }
+}
+

@@ -1,0 +1,68 @@
+VarInt action = packet.get("action", VarInt.class);
+writer.writeVarInt(action);
+writer.writeVarInt(packet.get("number_of_players", VarInt.class));
+
+DataBlockArray playersBlock = packet.get("players", DataBlockArray.class);
+for (DataBlock player : playersBlock) {
+    writer.writeUUID(player.get("uuid", UUID.class));
+
+    switch (action.get()) {
+        case 0:
+            writer.writePacketString(player.get("name", String.class));
+            writer.writeVarInt(player.get("number_of_properties", VarInt.class));
+
+            DataBlockArray properties = player.get("properties", DataBlockArray.class);
+            for (DataBlock property : properties) {
+                writer.writePacketString(property.get("name", String.class));
+                writer.writePacketString(property.get("value", String.class));
+
+                boolean isSigned = property.get("is_signed", Boolean.class);
+                writer.writeBoolean(isSigned);
+                if (isSigned) {
+                    writer.writePacketString(property.get("signature", String.class));
+                }
+            }
+
+            writer.writeVarInt(player.get("gamemode", VarInt.class));
+            writer.writeVarInt(player.get("ping", VarInt.class));
+
+            boolean hasDisplayName = player.get("has_display_name", Boolean.class);
+            writer.writeBoolean(hasDisplayName);
+            if (hasDisplayName) {
+                writer.writePacketString(player.get("display_name", String.class));
+            }
+
+            boolean hasSignatureData = player.get("has_sig_data", Boolean.class);
+            writer.writeBoolean(hasSignatureData);
+            if (hasSignatureData) {
+                writer.writeLong(player.get("timestamp", Long.class));
+                writer.writeVarInt(player.get("public_key_length", VarInt.class));
+                writer.writeByteArray(player.get("public_key", byte[].class));
+                writer.writeVarInt(player.get("signature_length", VarInt.class));
+                writer.writeByteArray(player.get("signature", byte[].class));
+            }
+
+            break;
+
+        case 1:
+            writer.writeVarInt(player.get("gamemode", VarInt.class));
+            break;
+
+        case 2:
+            writer.writeVarInt(player.get("ping", VarInt.class));
+            break;
+
+        case 3:
+            boolean hasDisplayName = player.get("has_display_name", Boolean.class);
+            writer.writeBoolean(hasDisplayName);
+            if (hasDisplayName) {
+                writer.writePacketString(player.get("display_name", String.class));
+            }
+
+            break;
+
+        case 4:
+            break;
+    }
+}
+

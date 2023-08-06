@@ -1,0 +1,64 @@
+int action = packet.get("action", Integer.class);
+writer.writeByte(action);
+
+DataBlockArray actionsBlock = packet.get("actions", DataBlockArray.class);
+writer.writeVarInt(actionsBlock.size());
+
+for (DataBlock actionBlock : actionsBlock) {
+    writer.writeUUID(actionBlock.get("uuid", UUID.class));
+
+    if ((action & 0x01) != 0) {
+        writer.writePacketString(actionBlock.get("name", String.class));
+
+        DataBlockArray properties = actionBlock.get("properties", DataBlockArray.class);
+        writer.writeVarInt(properties.size());
+
+        for (DataBlock property : properties) {
+            writer.writePacketString(property.get("name", String.class));
+            writer.writePacketString(property.get("value", String.class));
+
+            boolean isSigned = property.get("is_signed", Boolean.class);
+            writer.writeBoolean(isSigned);
+            if (isSigned) {
+                writer.writePacketString(property.get("signature", String.class));
+            }
+        }
+    }
+
+    if ((action & 0x02) != 0) {
+        boolean hasSignatureData = actionBlock.get("has_sig_data", Boolean.class);
+        writer.writeBoolean(hasSignatureData);
+        if (hasSignatureData) {
+            writer.writeUUID(actionBlock.get("chat_session_id", UUID.class));
+            writer.writeLong(actionBlock.get("expiry_time", Long.class));
+
+            byte[] publicKey = actionBlock.get("public_key", byte[].class);
+            writer.writeVarInt(publicKey.length);
+            writer.writeByteArray(publicKey);
+
+            byte[] signature = actionBlock.get("signature", byte[].class);
+            writer.writeVarInt(signature.length);
+            writer.writeByteArray(signature);
+        }
+    }
+
+    if ((action & 0x04) != 0) {
+        writer.writeVarInt(actionBlock.get("gamemode", VarInt.class));
+    }
+
+    if ((action & 0x08) != 0) {
+        writer.writeBoolean(actionBlock.get("listed", Boolean.class));
+    }
+
+    if ((action & 0x10) != 0) {
+        writer.writeVarInt(actionBlock.get("ping", VarInt.class));
+    }
+
+    if ((action & 0x20) != 0) {
+        boolean hasDisplayName = actionBlock.get("has_display_name", Boolean.class);
+        writer.writeBoolean(hasDisplayName);
+        if (hasDisplayName) {
+            writer.writePacketString(actionBlock.get("display_name", String.class));
+        }
+    }
+}

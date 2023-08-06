@@ -1,0 +1,7 @@
+writer.writeInt(packet.get("entity_id", Integer.class));
+writer.writeByte(packet.get("gamemode", Byte.class));
+writer.writeByte(packet.get("dimension", Byte.class));
+writer.writeByte(packet.get("difficulty", Byte.class));
+writer.writeByte(packet.get("max_players", Byte.class));
+writer.writePacketString(packet.get("level_type", String.class));
+writer.writeBoolean(packet.get("reduced_debug_info", Boolean.class));

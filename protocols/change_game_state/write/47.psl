@@ -1,0 +1,3 @@
+writer.writeByte(packet.get("reason", Integer.class));
+writer.writeFloat(packet.get("value", Float.class));
+

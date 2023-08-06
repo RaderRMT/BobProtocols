@@ -1,0 +1,24 @@
+packet.add("entity_id", reader.readInt());
+packet.add("gamemode", reader.readByte());
+packet.add("previous_gamemode", reader.readByte());
+
+VarInt worldCount = reader.readVarInt();
+packet.add("world_count", worldCount);
+String[] worldNames = new String[worldCount.get()];
+for (int i = 0; i < worldCount.get(); i++) {
+    worldNames[i] = reader.readString();
+}
+
+packet.add("world_names", worldNames);
+
+packet.add("nbt", reader.readNBT());
+packet.add("dimension", reader.readString());
+packet.add("world_name", reader.readString());
+packet.add("hashed_seed", reader.readLong());
+packet.add("max_players", reader.readByte());
+packet.add("view_distance", reader.readVarInt());
+packet.add("reduced_debug_info", reader.readBoolean());
+packet.add("enable_respawn_screen", reader.readBoolean());
+packet.add("is_debug", reader.readBoolean());
+packet.add("is_flat", reader.readBoolean());
+

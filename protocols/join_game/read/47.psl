@@ -1,0 +1,8 @@
+packet.add("entity_id", reader.readInt());
+packet.add("gamemode", reader.readByte());
+packet.add("dimension", reader.readByte());
+packet.add("difficulty", reader.readByte());
+packet.add("max_players", reader.readByte());
+packet.add("level_type", reader.readString());
+packet.add("reduced_debug_info", reader.readBoolean());
+

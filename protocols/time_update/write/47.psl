@@ -1,0 +1,3 @@
+writer.writeLong(packet.get("world_age", Long.class));
+writer.writeLong(packet.get("time_of_day", Long.class));
+

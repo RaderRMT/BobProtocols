@@ -1,4 +1,4 @@
 {
-  "version": 1,
-  "update_message": "Initial PSL version"
+  "version": 2,
+  "update_message": "Updated PSL scripts to work on 1.19.3+. Please update your ImBob because the new scripts are not compatible with the old version."
 }

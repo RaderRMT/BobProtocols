@@ -1,0 +1,9 @@
+writer.writeInt(packet.get("entity_id", Integer.class));
+writer.writeByte(packet.get("gamemode", Integer.class));
+writer.writeInt(packet.get("dimension", Integer.class));
+writer.writeLong(packet.get("hashed_seed", Long.class));
+writer.writeByte(packet.get("max_players", Byte.class));
+writer.writePacketString(packet.get("level_type", String.class));
+writer.writeVarInt(packet.get("view_distance", VarInt.class));
+writer.writeBoolean(packet.get("reduced_debug_info", Boolean.class));
+writer.writeBoolean(packet.get("enable_respawn_screen", Boolean.class));

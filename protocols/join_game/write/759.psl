@@ -1,0 +1,28 @@
+writer.writeInt(packet.get("entity_id", Integer.class));
+writer.writeBoolean(packet.get("is_hardcore", Boolean.class));
+writer.writeByte(packet.get("gamemode", Integer.class));
+writer.writeByte(packet.get("previous_gamemode", Integer.class));
+
+writer.writeVarInt(packet.get("world_count", VarInt.class));
+for (String worldName : packet.get("world_names", String[].class)) {
+    writer.writePacketString(worldName);
+}
+
+writer.writeNBT(packet.get("dimension_codec", TagCompound.class));
+writer.writePacketString(packet.get("dimension_type", String.class));
+writer.writePacketString(packet.get("dimension_name", String.class));
+writer.writeLong(packet.get("hashed_seed", Long.class));
+writer.writeVarInt(packet.get("max_players", VarInt.class));
+writer.writeVarInt(packet.get("view_distance", VarInt.class));
+writer.writeVarInt(packet.get("simulation_distance", VarInt.class));
+writer.writeBoolean(packet.get("reduced_debug_info", Boolean.class));
+writer.writeBoolean(packet.get("enable_respawn_screen", Boolean.class));
+writer.writeBoolean(packet.get("is_debug", Boolean.class));
+writer.writeBoolean(packet.get("is_flat", Boolean.class));
+
+boolean hasDeathLocation = packet.get("has_death_location", Boolean.class);
+writer.writeBoolean(hasDeathLocation);
+if (hasDeathLocation) {
+    writer.writePacketString(packet.get("death_dimension_name", String.class));
+    writer.writePosition(packet.get("death_location", Position.class));
+}

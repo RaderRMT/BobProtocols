@@ -143,6 +143,22 @@
     {
       "name": "MC_1_19_2",
       "version": 760
+    },
+    {
+      "name": "MC_1_19_3",
+      "version": 761
+    },
+    {
+      "name": "MC_1_19_4",
+      "version": 762
+    },
+    {
+      "name": "MC_1_20",
+      "version": 763
+    },
+    {
+      "name": "MC_1_20_1",
+      "version": 763
     }
   ]
 }

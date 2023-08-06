@@ -1,0 +1,3 @@
+packet.add("reason", reader.readByte());
+packet.add("value", reader.readFloat());
+
