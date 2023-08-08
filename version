@@ -1,4 +1,4 @@
 {
-  "version": 2,
-  "update_message": "Updated PSL scripts to work on 1.19.3+. Please update ImBob."
+  "version": 3,
+  "update_message": "Fixed readPosition missing an argument."
 }

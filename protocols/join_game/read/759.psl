@@ -29,5 +29,5 @@ packet.add("has_death_location", hasDeathLocation);
 
 if (hasDeathLocation) {
     packet.add("death_dimension_name", reader.readString());
-    packet.add("death_location", reader.readPosition());
+    packet.add("death_location", reader.readPosition(packet.getProtocol()));
 }
