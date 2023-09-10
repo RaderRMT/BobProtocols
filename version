@@ -1,4 +1,4 @@
 {
-  "version": 4,
-  "update_message": "Fixed missing field in Player Info read PSL."
+  "version": 5,
+  "update_message": "Fixed more missing field in Player Info read & write PSL."
 }

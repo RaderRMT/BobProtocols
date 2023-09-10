@@ -35,6 +35,17 @@ for (int i = 0; i < numberOfPlayers.get(); i++) {
             }
 
             playerData.add("properties", properties);
+            
+            playerData.add("gamemode", reader.readVarInt());
+            playerData.add("ping", reader.readVarInt());
+
+            boolean hasDisplayName = reader.readBoolean();
+            playerData.add("has_display_name", hasDisplayName);
+
+            if (hasDisplayName) {
+                playerData.add("display_name", reader.readString());
+            }
+
             break;
 
         case 1:

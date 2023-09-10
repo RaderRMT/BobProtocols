@@ -22,6 +22,14 @@ for (DataBlock player : playersBlock) {
                 }
             }
 
+            writer.writeVarInt(player.get("gamemode", VarInt.class));
+            writer.writeVarInt(player.get("ping", VarInt.class));
+
+            boolean hasDisplayName = player.get("has_display_name", Boolean.class);
+            if (hasDisplayName) {
+                writer.writePacketString(player.get("display_name", String.class));
+            }
+            
             break;
 
         case 1:
