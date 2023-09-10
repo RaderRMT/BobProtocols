@@ -35,7 +35,7 @@ for (int i = 0; i < numberOfPlayers.get(); i++) {
             }
 
             playerData.add("properties", properties);
-            
+
             playerData.add("gamemode", reader.readVarInt());
             playerData.add("ping", reader.readVarInt());
 
@@ -67,7 +67,6 @@ for (int i = 0; i < numberOfPlayers.get(); i++) {
             break;
 
         case 4:
-            playerData.add("gamemode", reader.readVarInt());
             break;
     }
 }
