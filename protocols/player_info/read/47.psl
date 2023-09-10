@@ -34,6 +34,7 @@ for (int i = 0; i < numberOfPlayers.get(); i++) {
                 }
             }
 
+            playerData.add("properties", properties);
             break;
 
         case 1:

@@ -1,4 +1,4 @@
 {
-  "version": 3,
-  "update_message": "Fixed readPosition missing an argument."
+  "version": 4,
+  "update_message": "Fixed missing field in Player Info read PSL."
 }
