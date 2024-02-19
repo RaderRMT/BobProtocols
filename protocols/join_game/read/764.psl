@@ -1,0 +1,35 @@
+packet.add("entity_id", reader.readInt());
+packet.add("is_hardcore", reader.readBoolean());
+
+VarInt worldCount = reader.readVarInt();
+packet.add("world_count", worldCount);
+String[] worldNames = new String[worldCount.get()];
+for (int i = 0; i < worldCount.get(); i++) {
+    worldNames[i] = reader.readString();
+}
+
+packet.add("world_names", worldNames);
+
+packet.add("max_players", reader.readVarInt());
+packet.add("view_distance", reader.readVarInt());
+packet.add("simulation_distance", reader.readVarInt());
+packet.add("reduced_debug_info", reader.readBoolean());
+packet.add("enable_respawn_screen", reader.readBoolean());
+packet.add("do_limited_crafting", reader.readBoolean());
+packet.add("dimension_type", reader.readString());
+packet.add("dimension_name", reader.readString());
+packet.add("hashed_seed", reader.readLong());
+packet.add("gamemode", reader.readByte());
+packet.add("previous_gamemode", reader.readByte());
+packet.add("is_debug", reader.readBoolean());
+packet.add("is_flat", reader.readBoolean());
+
+boolean hasDeathLocation = reader.readBoolean();
+packet.add("has_death_location", hasDeathLocation);
+
+if (hasDeathLocation) {
+    packet.add("death_dimension_name", reader.readString());
+    packet.add("death_location", reader.readPosition(packet.getProtocol()));
+}
+
+packet.add("portal_cooldown", reader.readVarInt());

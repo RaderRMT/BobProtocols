@@ -159,6 +159,18 @@
     {
       "name": "MC_1_20_1",
       "version": 763
+    },
+    {
+      "name": "MC_1_20_2",
+      "version": 764
+    },
+    {
+      "name": "MC_1_20_3",
+      "version": 765
+    },
+    {
+      "name": "MC_1_20_4",
+      "version": 765
     }
   ]
 }

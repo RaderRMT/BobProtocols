@@ -1,4 +1,4 @@
 {
-  "version": 6,
-  "update_message": "Fixed Player Info action 4."
+  "version": 7,
+  "update_message": "Updated protocol files to MC 1.20.2-1.20.4.\nPlease report any issues to the GitHub Repository."
 }
