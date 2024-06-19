@@ -1,0 +1,20 @@
+packet.add("registry_id", reader.readString());
+
+VarInt entryCount = reader.readVarInt();
+packet.add("entry_count", entryCount);
+
+DataBlockArray entries = new DataBlockArray();
+for (int i = 0; i < entryCount.get(); i++) {
+    DataBlock entry = entries.create();
+
+    entry.add("entry_id", reader.readString());
+
+    boolean hasData = reader.readBoolean();
+    entry.add("had_data", hasData);
+
+    if (hasData) {
+        entry.add("data", reader.readRootNBT());
+    }
+}
+
+packet.add("entries", entries);

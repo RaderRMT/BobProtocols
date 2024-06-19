@@ -1,0 +1,1 @@
+writer.writeNBT(packet.get("registry_codec", TagCompound.class));

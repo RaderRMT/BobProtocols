@@ -1,0 +1,15 @@
+writer.writeInt(packet.get("registry_id", String.class));
+
+DataBlockArray entries = packet.get("entries");
+writer.writeVarInt(packet.get(entries.size(), VarInt.class));
+
+for (DataBlock entry : entries) {
+    writer.writePacketString(entry.get("entry_id", String.class));
+
+    boolean hasData = entry.get("had_data", Boolean.class);
+    writer.writeBoolean(hadData);
+
+    if (hasData) {
+        writer.writeNBT(entry.get("data", TagCompound.class));
+    }
+}

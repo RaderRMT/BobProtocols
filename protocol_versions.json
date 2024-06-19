@@ -171,6 +171,18 @@
     {
       "name": "MC_1_20_4",
       "version": 765
+    },
+    {
+      "name": "MC_1_20_5",
+      "version": 766
+    },
+    {
+      "name": "MC_1_20_6",
+      "version": 766
+    },
+    {
+      "name": "MC_1_21",
+      "version": 767
     }
   ]
 }
